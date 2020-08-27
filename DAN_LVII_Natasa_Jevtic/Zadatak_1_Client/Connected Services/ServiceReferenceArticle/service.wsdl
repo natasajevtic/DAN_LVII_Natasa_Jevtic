@@ -25,6 +25,12 @@
   <wsdl:message name="IService1_UpdateArticle_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateArticleResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_CreateBill_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateBill" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreateBill_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateBillResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="ViewArticles">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ViewArticles" message="tns:IService1_ViewArticles_InputMessage" />
@@ -37,6 +43,10 @@
     <wsdl:operation name="UpdateArticle">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateArticle" message="tns:IService1_UpdateArticle_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateArticleResponse" message="tns:IService1_UpdateArticle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateBill">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CreateBill" message="tns:IService1_CreateBill_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CreateBillResponse" message="tns:IService1_CreateBill_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -61,6 +71,15 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateArticle">
       <soap:operation soapAction="http://tempuri.org/IService1/UpdateArticle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateBill">
+      <soap:operation soapAction="http://tempuri.org/IService1/CreateBill" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

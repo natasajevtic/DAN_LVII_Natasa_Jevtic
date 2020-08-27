@@ -115,6 +115,88 @@ namespace Zadatak_1_Client
                         Console.WriteLine();
                         break;
                     case "3":
+                        string answer = "";
+                        string bill = "";
+                        string article = "";
+                        double totalPrice = 0;
+                        do
+                        {
+                            List<Article> articlesToAdd;
+                            using (Service1Client service = new Service1Client())
+                            {
+                                articlesToAdd = service.ViewArticles().ToList();
+                                counterOfItem = 0;
+                                foreach (Article item in articlesToAdd)
+                                {
+                                    Console.WriteLine(++counterOfItem + ". Name: " + item.Name + ", Quantity: " + item.Quantity + ", Price: " + item.Price);
+                                }
+                            }
+                            bool canBuy = false;
+                            int articleNumber = 0;
+                            Article articleToBuy;
+
+                            do
+                            {
+                                Console.WriteLine("Choose which article you want to add:");
+                                string inputForId = Console.ReadLine();
+                                bool conversionForId = Int32.TryParse(inputForId, out articleNumber);
+                                //checking for existing article
+                                while (!conversionForId || articleNumber <= 0 || articleNumber > counterOfItem)
+                                {
+                                    Console.WriteLine("Invalid input. Try again:");
+                                    inputForId = Console.ReadLine();
+                                    conversionForId = Int32.TryParse(inputForId, out articleNumber);
+                                }
+                                articleToBuy = articlesToAdd.ElementAt(articleNumber - 1);
+                                if (articleToBuy.Quantity == 0)
+                                {
+                                    Console.WriteLine("This article is out of stock. Please choose another.");
+                                }
+                                else
+                                {
+                                    canBuy = true;
+                                }
+                            } while (canBuy == false);
+
+                            Console.WriteLine("Enter quantity of article:");
+                            string quantityToBuy = Console.ReadLine();
+                            bool conversionForQuantityToBuy = Int32.TryParse(quantityToBuy, out int articleQuantityToBuy);
+                            while (!conversionForQuantityToBuy || articleQuantityToBuy <= 0 || articleQuantityToBuy > articleToBuy.Quantity)
+                            {
+                                Console.WriteLine("Invalid input. Try again:");
+                                quantityToBuy = Console.ReadLine();
+                                conversionForQuantityToBuy = Int32.TryParse(quantityToBuy, out articleQuantityToBuy);
+                            }
+                            articleToBuy.Quantity -= articleQuantityToBuy;
+                            using (Service1Client service = new Service1Client())
+                            {
+                                bool isChanged = service.UpdateArticle(articleToBuy);
+                            }
+                            article += articleToBuy.Name + "-" + (articleQuantityToBuy * articleToBuy.Price) + ",";
+                            totalPrice += articleQuantityToBuy * articleToBuy.Price;
+                            Console.WriteLine("Do you want to add more articles? ");
+                            answer = Console.ReadLine().ToUpper();
+                            while (answer != "YES" && answer != "NO")
+                            {
+                                Console.WriteLine("Please enter yes or no.");
+                                answer = Console.ReadLine().ToUpper();
+                            }                            
+
+                        } while (answer.ToUpper() == "YES");
+                        bill += DateTime.Now.ToString("HH:mm:ss") + "," + article + totalPrice;
+                        using (Service1Client service = new Service1Client())
+                        {
+                            bool isCreated = service.CreateBill(bill);
+                            if (isCreated)
+                            {
+                                Console.WriteLine("Successfully finished purchase.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Purchase cannot be made.");
+                            }
+                        }
+                        
                         break;
                     case "4":
                         List<Article> articles;
@@ -187,8 +269,8 @@ namespace Zadatak_1_Client
                                             Console.WriteLine("Article cannot be updated.");
                                         }
                                     }
-                                }                                
-                            }                            
+                                }
+                            }
                         }
                         break;
                     case "5":
@@ -199,7 +281,7 @@ namespace Zadatak_1_Client
                 }
             } while (option != "5");
         }
-        
+
         public static bool CheckIfNameUnique(string name)
         {
             using (Service1Client service = new Service1Client())

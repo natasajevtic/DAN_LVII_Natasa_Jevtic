@@ -16,5 +16,7 @@ namespace Zadatak_1_WCF
         bool AddArticle(Article article);
         [OperationContract]
         bool UpdateArticle(Article article);
+        [OperationContract]
+        bool CreateBill(string bill);
     }    
 }

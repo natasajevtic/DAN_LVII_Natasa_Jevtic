@@ -111,6 +111,12 @@ namespace Zadatak_1_Client.ServiceReferenceArticle {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateArticle", ReplyAction="http://tempuri.org/IService1/UpdateArticleResponse")]
         System.Threading.Tasks.Task<bool> UpdateArticleAsync(Zadatak_1_Client.ServiceReferenceArticle.Article article);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateBill", ReplyAction="http://tempuri.org/IService1/CreateBillResponse")]
+        bool CreateBill(string bill);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateBill", ReplyAction="http://tempuri.org/IService1/CreateBillResponse")]
+        System.Threading.Tasks.Task<bool> CreateBillAsync(string bill);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -162,6 +168,14 @@ namespace Zadatak_1_Client.ServiceReferenceArticle {
         
         public System.Threading.Tasks.Task<bool> UpdateArticleAsync(Zadatak_1_Client.ServiceReferenceArticle.Article article) {
             return base.Channel.UpdateArticleAsync(article);
+        }
+        
+        public bool CreateBill(string bill) {
+            return base.Channel.CreateBill(bill);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CreateBillAsync(string bill) {
+            return base.Channel.CreateBillAsync(bill);
         }
     }
 }

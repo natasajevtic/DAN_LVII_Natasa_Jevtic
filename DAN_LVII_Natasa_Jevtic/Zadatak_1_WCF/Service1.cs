@@ -12,6 +12,7 @@ namespace Zadatak_1_WCF
     {
         readonly string articleFolder = AppDomain.CurrentDomain.BaseDirectory + @"\..\..\Files";
         readonly string locationFile = AppDomain.CurrentDomain.BaseDirectory + @"\..\..\Files\Articles.txt";
+        static int counterForBill;
 
         public bool AddArticle(Article article)
         {
@@ -28,6 +29,21 @@ namespace Zadatak_1_WCF
             }            
         }
 
+        public bool CreateBill(string bill)
+        {
+            try
+            {
+                StreamWriter str = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + string.Format(@"\..\..\Files\Bill_{0}_TimeStamp.txt", ++counterForBill));
+                str.WriteLine(bill);
+                str.Close();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public bool UpdateArticle(Article article)
         {
             List<Article> articles = ViewArticles();
@@ -35,6 +51,7 @@ namespace Zadatak_1_WCF
             if (articleToUpdate != null)
             {
                 articleToUpdate.Price = article.Price;
+                articleToUpdate.Quantity = article.Quantity;
             }
             try
             {
