@@ -101,10 +101,10 @@ namespace Zadatak_1_Client.ServiceReferenceArticle {
         System.Threading.Tasks.Task<Zadatak_1_Client.ServiceReferenceArticle.Article[]> ViewArticlesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddArticle", ReplyAction="http://tempuri.org/IService1/AddArticleResponse")]
-        void AddArticle();
+        bool AddArticle(Zadatak_1_Client.ServiceReferenceArticle.Article article);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddArticle", ReplyAction="http://tempuri.org/IService1/AddArticleResponse")]
-        System.Threading.Tasks.Task AddArticleAsync();
+        System.Threading.Tasks.Task<bool> AddArticleAsync(Zadatak_1_Client.ServiceReferenceArticle.Article article);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -142,12 +142,12 @@ namespace Zadatak_1_Client.ServiceReferenceArticle {
             return base.Channel.ViewArticlesAsync();
         }
         
-        public void AddArticle() {
-            base.Channel.AddArticle();
+        public bool AddArticle(Zadatak_1_Client.ServiceReferenceArticle.Article article) {
+            return base.Channel.AddArticle(article);
         }
         
-        public System.Threading.Tasks.Task AddArticleAsync() {
-            return base.Channel.AddArticleAsync();
+        public System.Threading.Tasks.Task<bool> AddArticleAsync(Zadatak_1_Client.ServiceReferenceArticle.Article article) {
+            return base.Channel.AddArticleAsync(article);
         }
     }
 }

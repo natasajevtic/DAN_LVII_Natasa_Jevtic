@@ -13,6 +13,21 @@ namespace Zadatak_1_WCF
         readonly string articleFolder = AppDomain.CurrentDomain.BaseDirectory + @"\..\..\Files";
         readonly string locationFile = AppDomain.CurrentDomain.BaseDirectory + @"\..\..\Files\Articles.txt";
 
+        public bool AddArticle(Article article)
+        {
+            try
+            {
+                StreamWriter str = new StreamWriter(locationFile, true);
+                str.WriteLine(article.Name + "," + article.Quantity + "," + Math.Round(article.Price, 2));
+                str.Close();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }            
+        }
+
         public List<Article> ViewArticles()
         {
             List<Article> articles = new List<Article>();

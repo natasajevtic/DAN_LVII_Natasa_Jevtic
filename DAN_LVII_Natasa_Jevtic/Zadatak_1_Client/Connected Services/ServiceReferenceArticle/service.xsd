@@ -15,12 +15,16 @@
   </xs:element>
   <xs:element name="AddArticle">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Zadatak_1_WCF" minOccurs="0" name="article" nillable="true" type="q2:Article" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddArticleResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddArticleResult" type="xs:boolean" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
 </xs:schema>
