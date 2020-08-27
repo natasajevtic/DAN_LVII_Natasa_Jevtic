@@ -28,6 +28,30 @@ namespace Zadatak_1_WCF
             }            
         }
 
+        public bool UpdateArticle(Article article)
+        {
+            List<Article> articles = ViewArticles();
+            Article articleToUpdate = articles.Where(x => x.Name == article.Name).FirstOrDefault();
+            if (articleToUpdate != null)
+            {
+                articleToUpdate.Price = article.Price;
+            }
+            try
+            {
+                StreamWriter str = new StreamWriter(locationFile);
+                foreach (Article item in articles)
+                {
+                    str.WriteLine(item.Name + "," + item.Quantity + "," + Math.Round(item.Price, 2));
+                }
+                str.Close();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }            
+        }
+
         public List<Article> ViewArticles()
         {
             List<Article> articles = new List<Article>();

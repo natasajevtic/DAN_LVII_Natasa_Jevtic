@@ -14,5 +14,7 @@ namespace Zadatak_1_WCF
         List<Article> ViewArticles();
         [OperationContract]
         bool AddArticle(Article article);
+        [OperationContract]
+        bool UpdateArticle(Article article);
     }    
 }

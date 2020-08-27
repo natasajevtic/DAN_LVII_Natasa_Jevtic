@@ -105,6 +105,12 @@ namespace Zadatak_1_Client.ServiceReferenceArticle {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddArticle", ReplyAction="http://tempuri.org/IService1/AddArticleResponse")]
         System.Threading.Tasks.Task<bool> AddArticleAsync(Zadatak_1_Client.ServiceReferenceArticle.Article article);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateArticle", ReplyAction="http://tempuri.org/IService1/UpdateArticleResponse")]
+        bool UpdateArticle(Zadatak_1_Client.ServiceReferenceArticle.Article article);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateArticle", ReplyAction="http://tempuri.org/IService1/UpdateArticleResponse")]
+        System.Threading.Tasks.Task<bool> UpdateArticleAsync(Zadatak_1_Client.ServiceReferenceArticle.Article article);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -148,6 +154,14 @@ namespace Zadatak_1_Client.ServiceReferenceArticle {
         
         public System.Threading.Tasks.Task<bool> AddArticleAsync(Zadatak_1_Client.ServiceReferenceArticle.Article article) {
             return base.Channel.AddArticleAsync(article);
+        }
+        
+        public bool UpdateArticle(Zadatak_1_Client.ServiceReferenceArticle.Article article) {
+            return base.Channel.UpdateArticle(article);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateArticleAsync(Zadatak_1_Client.ServiceReferenceArticle.Article article) {
+            return base.Channel.UpdateArticleAsync(article);
         }
     }
 }
