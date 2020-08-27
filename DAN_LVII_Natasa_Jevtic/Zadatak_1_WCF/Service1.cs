@@ -1,31 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
 namespace Zadatak_1_WCF
-{
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
+{    
     public class Service1 : IService1
     {
-        public string GetData(int value)
-        {
-            return string.Format("You entered: {0}", value);
-        }
+        string articleFolder = AppDomain.CurrentDomain.BaseDirectory + @"\..\..\Files";
+        string locationFile = AppDomain.CurrentDomain.BaseDirectory + @"\..\..\Files\Articles.txt";
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        public List<Article> ViewArticles()
         {
-            if (composite == null)
+            if (File.Exists(locationFile))
             {
-                throw new ArgumentNullException("composite");
+                List<Article> articles = new List<Article>();
+                string[] lines = File.ReadAllLines(locationFile);
+                List<string> list = new List<string>();
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    list = lines[i].Split(',').ToList();
+                    Article article = new Article()
+                    {
+                        Name = list[0],
+                        Quantity = Int32.Parse(list[1]),
+                        Price = Double.Parse(list[2])
+                    };                    
+                    articles.Add(article);
+                }
+                return articles;
             }
-            if (composite.BoolValue)
+            else
             {
-                composite.StringValue += "Suffix";
+                return null;
             }
-            return composite;
         }
     }
 }
