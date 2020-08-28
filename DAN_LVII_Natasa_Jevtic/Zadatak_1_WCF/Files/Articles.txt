@@ -1,0 +1,6 @@
+Photo album,5,1590
+Planer,10,999
+Round mirror,2,1290
+Pencil case,8,649.99
+Jewelry box,5,1999.99
+Metal bottle,15,749.99

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1f7831be-7f72-4c72-bc3a-7cd0bcd9df3a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/Zadatak_1_WCF/Service1/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="ecd4ae27-a62e-421d-9767-85ce4f6cfd64" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Zadatak_1_WCF/Service1/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="712eaf13-1ec5-42ac-9fd1-fb706d723446" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Zadatak_1_WCF/Service1/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="2f5cc821-a901-411d-8ea3-409b0b15b207" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Zadatak_1_WCF/Service1/mex" />
+    <MetadataFile FileName="Zadatak_1_WCF.xsd" MetadataType="Schema" ID="545bd371-f30e-4f27-aa76-42bb62bdd3ca" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Zadatak_1_WCF/Service1/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
