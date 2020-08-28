@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
 
 namespace Zadatak_1_WCF
 {    
@@ -13,7 +10,11 @@ namespace Zadatak_1_WCF
         readonly string articleFolder = AppDomain.CurrentDomain.BaseDirectory + @"\..\..\Files";
         readonly string locationFile = AppDomain.CurrentDomain.BaseDirectory + @"\..\..\Files\Articles.txt";
         static int counterForBill;
-
+        /// <summary>
+        /// This method write data about new article to txt.
+        /// </summary>
+        /// <param name="article">Article to be added.</param>
+        /// <returns>True if added, false if not.</returns>
         public bool AddArticle(Article article)
         {
             try
@@ -28,7 +29,11 @@ namespace Zadatak_1_WCF
                 return false;
             }            
         }
-
+        /// <summary>
+        /// This method writes data about bill to txt file.
+        /// </summary>
+        /// <param name="bill">Bill to be created.</param>
+        /// <returns>True if created, false if not.</returns>
         public bool CreateBill(string bill)
         {
             try
@@ -43,7 +48,11 @@ namespace Zadatak_1_WCF
                 return false;
             }
         }
-
+        /// <summary>
+        /// This method updates data about article in txt file.
+        /// </summary>
+        /// <param name="article">Article to be updated.</param>
+        /// <returns>True if updated, false if not.</returns>
         public bool UpdateArticle(Article article)
         {
             List<Article> articles = ViewArticles();
@@ -68,7 +77,10 @@ namespace Zadatak_1_WCF
                 return false;
             }            
         }
-
+        /// <summary>
+        /// This method read all data about articles from txt file.
+        /// </summary>
+        /// <returns>List of articles.</returns>
         public List<Article> ViewArticles()
         {
             List<Article> articles = new List<Article>();

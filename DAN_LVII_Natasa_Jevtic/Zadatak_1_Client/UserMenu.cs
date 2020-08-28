@@ -7,6 +7,9 @@ namespace Zadatak_1_Client
 {
     class UserMenu
     {
+        /// <summary>
+        /// This method displays menu to user and perform different actions based on user choice.
+        /// </summary>
         public static void DisplayMenu()
         {
             string option = "";
@@ -80,6 +83,7 @@ namespace Zadatak_1_Client
                                 }
                                 if (inputForPrice != ".")
                                 {
+                                    //sending data about article to be created to service
                                     using (Service1Client service = new Service1Client())
                                     {
                                         Article newArticle = new Article
@@ -105,6 +109,7 @@ namespace Zadatak_1_Client
                     case "2":
                         int counterOfItem = 0;
                         Console.WriteLine("\nArticles:");
+                        //retrieving data about articles from service
                         using (Service1Client service = new Service1Client())
                         {
                             foreach (Article item in service.ViewArticles())
@@ -196,7 +201,7 @@ namespace Zadatak_1_Client
                                 Console.WriteLine("Purchase cannot be made.");
                             }
                         }
-                        
+                        Console.WriteLine(bill);
                         break;
                     case "4":
                         List<Article> articles;
@@ -257,6 +262,7 @@ namespace Zadatak_1_Client
                                 {
                                     Article articleToEdit = articles.ElementAt(counterOfItem - 1);
                                     articleToEdit.Price = editedPrice;
+                                    //sending data about article to be updated to service
                                     using (Service1Client service = new Service1Client())
                                     {
                                         bool isUpdated = service.UpdateArticle(articleToEdit);
@@ -281,7 +287,11 @@ namespace Zadatak_1_Client
                 }
             } while (option != "5");
         }
-
+        /// <summary>
+        /// This method checks if article is unique based on name.
+        /// </summary>
+        /// <param name="name">Article name.</param>
+        /// <returns>True if unique, false if not.</returns>
         public static bool CheckIfNameUnique(string name)
         {
             using (Service1Client service = new Service1Client())
